@@ -1,11 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callisto.Web", "Callisto\Callisto.Web.csproj", "{8365DF44-115C-48BB-8039-F19273DF5176}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callisto.Tests", "Callisto.Tests\Callisto.Tests.csproj", "{9C0E4A20-1C0A-4441-B550-FAA1BCBD470C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callisto.Data", "Callisto.Data\Callisto.Data.csproj", "{7C6EB138-819E-4EC3-9D94-1383CF41C076}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callisto.Domain", "Callisto.Entities\Callisto.Domain.csproj", "{DDC7B46A-6131-4862-B917-AD7FDFF9924A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B67AECF8-2D0B-4C02-B55B-9A9F3FEE15EA}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +32,14 @@ Global
 		{9C0E4A20-1C0A-4441-B550-FAA1BCBD470C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C0E4A20-1C0A-4441-B550-FAA1BCBD470C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C0E4A20-1C0A-4441-B550-FAA1BCBD470C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C6EB138-819E-4EC3-9D94-1383CF41C076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6EB138-819E-4EC3-9D94-1383CF41C076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6EB138-819E-4EC3-9D94-1383CF41C076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6EB138-819E-4EC3-9D94-1383CF41C076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDC7B46A-6131-4862-B917-AD7FDFF9924A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC7B46A-6131-4862-B917-AD7FDFF9924A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC7B46A-6131-4862-B917-AD7FDFF9924A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC7B46A-6131-4862-B917-AD7FDFF9924A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿using System;
+using Callisto.Data;
+using Callisto.Domain.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
 
 namespace Callisto.Tests
 {
@@ -10,6 +11,10 @@ namespace Callisto.Tests
         [TestMethod]
         public void TestMethod1()
         {
+            IReleaseNoteService releaseNoteService = new ReleaseNoteService();
+
+            var notes = releaseNoteService.GetAllReleaseNotes();
+            Assert.IsNotNull(notes);
         }
     }
 }

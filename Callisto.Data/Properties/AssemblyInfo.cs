@@ -2,34 +2,35 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following
+// General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Callisto.Web")]
+[assembly: AssemblyTitle("Callisto.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Callisto")]
+[assembly: AssemblyProduct("Callisto.Data")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Setting ComVisible to false makes the types in this assembly not visible
-// to COM components.  If you need to access a type in this assembly from
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6569a1ef-a827-4870-83f4-78b833c72963")]
+[assembly: Guid("027f10dd-a0c1-4d63-bab7-c20dacd0d569")]
 
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
-//      Minor Version
+//      Minor Version 
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Revision and Build Numbers
+// You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
+// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

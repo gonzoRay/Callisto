@@ -11,7 +11,7 @@ namespace Callisto.Web.Controllers
 {
     public class ReleaseNotesController : Controller
     {
-        private IReleaseNoteService releaseNoteService;
+        public IReleaseNoteService _releaseNotesService;
 
         public ReleaseNotesController()
         {
@@ -22,14 +22,17 @@ namespace Callisto.Web.Controllers
         {
             if(releaseNoteService == null)
                 throw new ArgumentNullException("releaseNoteService");
+            
+            //HACK: Util DI starts working
+            this._releaseNotesService = new ReleaseNoteService();
 
-            this.releaseNoteService = releaseNoteService;
+            //this._releaseNoteService = releaseNoteService;
         }
 
         // GET: ReleaseNotes
         public ActionResult Index()
         {
-            var notes = releaseNoteService.GetAllReleaseNotes();
+            var notes = _releaseNotesService.GetAllReleaseNotes();
             var releaseNotes = notes.Select(n => n.FromDomainModel());
             return View(releaseNotes);
         }

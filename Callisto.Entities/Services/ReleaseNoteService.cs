@@ -11,19 +11,26 @@ namespace Callisto.Domain.Services
 {
     public class ReleaseNoteService : IReleaseNoteService
     {
-        private IReleaseNoteRepository releaseNoteRepository;
+        private IReleaseNoteRepository _releaseNoteRepository;
 
-        public void GetAllReleaseNotes(IReleaseNoteRepository releaseNoteRepository)
+        public ReleaseNoteService()
+        {
+            _releaseNoteRepository = new ReleaseNoteRepository(new ReleaseNoteContext("ReleaseNoteContext"));
+        }
+
+        public ReleaseNoteService(IReleaseNoteRepository releaseNoteRepository)
         {
             if(releaseNoteRepository == null)
                 throw new ArgumentNullException("releaseNoteRepository");
 
-            this.releaseNoteRepository = releaseNoteRepository;
+            //HACK: Until DI starts working
+            _releaseNoteRepository = new ReleaseNoteRepository(new ReleaseNoteContext("ReleaseNoteContext"));
+            //this._releaseNoteRepository = releaseNoteRepository;
         }
 
         public IEnumerable<Note> GetAllReleaseNotes()
         {
-            var dbNotes = releaseNoteRepository.GetAllReleaseNotes();
+            var dbNotes = _releaseNoteRepository.GetAllReleaseNotes();
             return dbNotes.Select(n => n.FromDataModel());
         }
 

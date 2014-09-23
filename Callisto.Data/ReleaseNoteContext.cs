@@ -26,15 +26,62 @@ namespace Callisto.Data
         public DbSet<Note> Notes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ConfigurationType> ConfigurationTypes { get; set; }
+        public DbSet<LinkType> LinkTypes { get; set; }
         public DbSet<Link> Links { get; set; }
         public DbSet<Module> Modules { get; set; }
         public DbSet<NoteText> NoteTexts { get; set; }
         public DbSet<RequiredType> RequiredTypes { get; set; }
         public DbSet<ReleaseVersion> Versions { get; set; }
+        public DbSet<NoteType> NoteTypes { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //Create Many to Many rel. between Notes <-> Category
+            modelBuilder.Entity<Note>()
+                .HasMany(n => n.Categories)
+                .WithMany(c => c.Notes)
+                .Map(c =>
+                {
+                    c.ToTable("CategoryLookup");
+                });
+
+            //Create Many to Many rel. between Notes <-> ReleaseVersion
+            modelBuilder.Entity<Note>()
+                .HasMany(n => n.ReleaseVersions)
+                .WithMany(rv => rv.Notes)
+                .Map(rv =>
+                {
+                    rv.ToTable("ReleaseVersionLookup");
+                });
+            
+            //Create Many to Many rel. between Notes <-> Link
+            modelBuilder.Entity<Note>()
+                .HasMany(n => n.Links)
+                .WithMany(ll => ll.Notes)
+                .Map(ll =>
+                {
+                    ll.ToTable("LinkLookup");
+                });
+
+            //Create single Navigation property for ConfigurationType
+            //modelBuilder.Entity<ConfigurationType>()
+            //    .HasKey(t => t.Id);
+
+            //modelBuilder.Entity<Note>()
+            //    .HasRequired(t => t.ConfigurationType)
+            //    .WithRequiredPrincipal();
+            
+            ////Create single Navigation property for Module
+            //modelBuilder.Entity<Module>()
+            //    .HasKey(t => t.Id);
+
+            //modelBuilder.Entity<Note>()
+            //    .HasRequired(t => t.Module)
+            //    .WithRequiredPrincipal();
+            
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

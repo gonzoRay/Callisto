@@ -1,4 +1,6 @@
-﻿namespace Callisto.Data.DbModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Callisto.Data.DbModels
 {
     public class Module
     {

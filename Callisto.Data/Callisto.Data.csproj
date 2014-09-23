@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbModels\LinkType.cs" />
+    <Compile Include="DbModels\NoteType.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="DbModels\Category.cs" />
     <Compile Include="DbModels\ConfigurationType.cs" />

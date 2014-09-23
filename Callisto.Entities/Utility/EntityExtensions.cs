@@ -6,17 +6,19 @@ namespace Callisto.Domain.Entities
     {
         public static Note FromDataModel(this DbModels.Note note)
         {
-            return new Note
-            {
-                Id = note.Id,
-                NoteText = new NoteText
-                {
-                    Client = note.NoteText.Client,
-                    Detail = note.NoteText.Detail,
-                    Id = note.NoteTextId,
-                    Summary = note.NoteText.Summary,
-                }
-            };
+            return null;
+
+            //return new Note
+            //{
+            //    Id = note.Id,
+            //    NoteText = new NoteText
+            //    {
+            //        Client = note.NoteText.Client,
+            //        Detail = note.NoteText.Detail,
+            //        Id = note.NoteTextId,
+            //        Summary = note.NoteText.Summary,
+            //    }
+            //};
         }
     }
 }

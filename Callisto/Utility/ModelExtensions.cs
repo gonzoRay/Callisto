@@ -6,11 +6,12 @@ namespace Callisto.Web.Models
     {
         public static ReleaseNoteModel FromDomainModel(this Note note)
         {
-            return new ReleaseNoteModel
-            {
-                Id = note.Id,
-                NoteText = note.NoteText.Detail,
-            };
+            return null;
+            //return new ReleaseNoteModel
+            //{
+            //    Id = note.Id,
+            //    NoteText = note.NoteText.Detail,
+            //};
         }
     }
 }

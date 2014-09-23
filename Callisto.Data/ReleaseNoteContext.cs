@@ -64,22 +64,6 @@ namespace Callisto.Data
                 {
                     ll.ToTable("LinkLookup");
                 });
-
-            //Create single Navigation property for ConfigurationType
-            //modelBuilder.Entity<ConfigurationType>()
-            //    .HasKey(t => t.Id);
-
-            //modelBuilder.Entity<Note>()
-            //    .HasRequired(t => t.ConfigurationType)
-            //    .WithRequiredPrincipal();
-            
-            ////Create single Navigation property for Module
-            //modelBuilder.Entity<Module>()
-            //    .HasKey(t => t.Id);
-
-            //modelBuilder.Entity<Note>()
-            //    .HasRequired(t => t.Module)
-            //    .WithRequiredPrincipal();
             
             base.OnModelCreating(modelBuilder);
         }

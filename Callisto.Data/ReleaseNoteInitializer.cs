@@ -72,17 +72,7 @@ namespace Callisto.Data
 
             modules.ForEach(m => context.Modules.Add(m));
             context.SaveChanges();
-
-            //Insert default required types
-            var requiredTypes = new List<RequiredType>
-            {
-                new RequiredType {RequiredOptionName = "Required"},
-                new RequiredType {RequiredOptionName = "Optional"},
-            };
-
-            requiredTypes.ForEach(r => context.RequiredTypes.Add(r));
-            context.SaveChanges();
-
+            
             //Insert default note types
             var noteTypes = new List<NoteType>
             {
@@ -109,13 +99,12 @@ namespace Callisto.Data
             //Create some actual release notes. 
             var notes = new List<Note>
             {
-                //TEST NOTE FOR BUG FIX - Multiple Releases
+                //TEST NOTE #1 - FOR BUG FIX - Multiple Releases
                 createNote(
                     /* seed data structures */
-                    noteTypes, categories, modules, releases, configurationTypes, requiredTypes, linkTypes,
+                    noteTypes, categories, modules, releases, configurationTypes, linkTypes,
                     /* seed data specifiers */
                     noteType: "Bug Fix",
-                    requiredType: "Required",
                     releaseVersions: "2014-R1,2013-R6",
                     categoryNames: "Database Changes,Exports",
                     configurationType: "Standard",
@@ -130,15 +119,17 @@ namespace Callisto.Data
                     {
                         createLink(linkTypes, "OT-1235", "OnTime"),
                         createLink(linkTypes, "CW-98766", "CustomerWise"),
-                    }),
+                    },
+                    isActive: true,
+                    isInitial: true,
+                    isActionRequired: false),
 
-                //TEST NOTE FOR ENHANCEMENT - Single Release
+                //TEST NOTE #2 - FOR ENHANCEMENT - Single Release
                 createNote(
                     /* seed data structures */
-                    noteTypes, categories, modules, releases, configurationTypes, requiredTypes, linkTypes,
+                    noteTypes, categories, modules, releases, configurationTypes, linkTypes,
                     /* seed data specifiers */
                     noteType: "Enhancement",
-                    requiredType: "Optional",
                     releaseVersions: "2014-R1",
                     categoryNames: "Database Changes,Exports, Deployments",
                     configurationType: "Standard",
@@ -153,15 +144,18 @@ namespace Callisto.Data
                     {
                         createLink(linkTypes, "CW-34533", "CustomerWise"),
                         createLink(linkTypes, "http://sharepoint.msi.com/?doc=file1.docx&sharepointsucks=true", "Other"),   
-                    }),
+                    },
+                    isActive: true,
+                    isInitial: true,
+                    isActionRequired: true,
+                    requiredAction: "First do ABC, then update XYZ."),
 
-                //TEST NOTE FOR ENHANCEMENT - Multiple Release
+                //TEST NOTE #3 - FOR ENHANCEMENT - Multiple Release
                 createNote(
                     /* seed data structures */
-                    noteTypes, categories, modules, releases, configurationTypes, requiredTypes, linkTypes,
+                    noteTypes, categories, modules, releases, configurationTypes, linkTypes,
                     /* seed data specifiers */
                     noteType: "Enhancement",
-                    requiredType: "Required",
                     releaseVersions: "2014-R1, 2013-R6, 2013-R5",
                     categoryNames: "Metadata",
                     configurationType: "Base",
@@ -177,15 +171,18 @@ namespace Callisto.Data
                         createLink(linkTypes, "OT-3392", "OnTime"),
                         createLink(linkTypes, "CW-85288", "CustomerWise"),
                         createLink(linkTypes, "http://sphere.msi.com/?idblah=somethingsomethingdarkside", "Other"),   
-                    }),
+                    },
+                    isActive: true,
+                    isInitial: true,
+                    isActionRequired: true,
+                    requiredAction: "First check DEF."),
 
-                //TEST NOTE FOR BUG FIX - Single Release (not yet active)
+                //TEST NOTE #4 - FOR BUG FIX - Single Release (not yet active)
                 createNote(
                     /* seed data structures */
-                    noteTypes, categories, modules, releases, configurationTypes, requiredTypes, linkTypes,
+                    noteTypes, categories, modules, releases, configurationTypes, linkTypes,
                     /* seed data specifiers */
                     noteType: "Bug Fix",
-                    requiredType: "Required",
                     releaseVersions: "2014-R1",
                     categoryNames: "STAR",
                     configurationType: "N/A",
@@ -213,10 +210,8 @@ namespace Callisto.Data
                                 List<Module> modules,
                                 List<ReleaseVersion> releases,
                                 List<ConfigurationType> configurationTypes,
-                                List<RequiredType> requiredTypes,
                                 List<LinkType> linkTypes,
                                 string noteType,
-                                string requiredType,
                                 string releaseVersions,
                                 string categoryNames,
                                 string configurationType,
@@ -237,9 +232,6 @@ namespace Callisto.Data
                 ModuleId = (modules.Where(m => moduleName.Contains(m.ModuleName)).Select(m => m.Id)).Single(),
                 ConfigurationTypeId = (configurationTypes.Where(ct => ct.ConfigurationTypeName == configurationType).Select(ct => ct.Id)).Single(),
                 NoteTypeId = (noteTypes.Where(nt => nt.NoteTypeName.Equals(noteType)).Select(nt => nt.Id)).Single(),
-                RequiredTypeId = (from rt in requiredTypes
-                                  where rt.RequiredOptionName == requiredType
-                                  select rt.Id).Single(),
                 Categories = (categories.Where(c => categoryNames.Contains(c.CategoryName))).ToList(),
                 ReleaseVersions = (releases.Where(rv => rv.Version == releaseVersions)).ToList(),
                 NoteText = noteText,

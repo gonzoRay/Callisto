@@ -11,12 +11,12 @@ namespace Callisto.Data.DbModels
         public bool IsInitial { get; set; }
         public bool IsActionRequired { get; set; }
         public string RequiredAction { get; set; }
+        public int SortOrder { get; set; }
 
         //Foreign keys
         public int NoteTextId { get; set; } 
         public int ModuleId { get; set; }
         public int ConfigurationTypeId { get; set; }
-        public int RequiredTypeId { get; set; }
         public int NoteTypeId { get; set; }
             
         //Navigation properties
@@ -29,8 +29,6 @@ namespace Callisto.Data.DbModels
         public virtual Module Module { get; set; }
         [Required]
         public virtual ConfigurationType ConfigurationType { get; set; }
-        [Required]
-        public virtual RequiredType RequiredType { get; set; }
         [Required]
         public virtual NoteType NoteType { get; set; }
     }

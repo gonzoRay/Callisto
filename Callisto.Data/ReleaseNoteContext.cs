@@ -30,7 +30,6 @@ namespace Callisto.Data
         public DbSet<Link> Links { get; set; }
         public DbSet<Module> Modules { get; set; }
         public DbSet<NoteText> NoteTexts { get; set; }
-        public DbSet<RequiredType> RequiredTypes { get; set; }
         public DbSet<ReleaseVersion> Versions { get; set; }
         public DbSet<NoteType> NoteTypes { get; set; }
         
